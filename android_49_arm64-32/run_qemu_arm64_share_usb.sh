@@ -1,5 +1,5 @@
 mkdir -p share_dir
-qemu-system-aarch64  -machine virt -cpu cortex-a57  -nographic -m 2048M -smp 4 -kernel ./Image   --append "rdinit=/linuxrc console=ttyAMA0 earlycon" -fsdev local,security_model=passthrough,id=fsdev0,path=share_dir -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare -usb a9rootfs.ext3 
+qemu-system-aarch64  -machine virt -cpu cortex-a53 -nographic -m 1024M -smp 4 -kernel ./Image   --append "rdinit=/linuxrc console=ttyAMA0 earlycon" -fsdev local,security_model=passthrough,id=fsdev0,path=share_dir -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare -usb a9rootfs.ext3 
 
 
 #host
