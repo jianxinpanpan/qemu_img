@@ -1,0 +1,11 @@
+qemu-system-arm  -M vexpress-a9  -m 1024M -kernel zImage  -append "rdinit=/linuxrc console=ttyAMA0 loglevel=8" -dtb vexpress-v2p-ca9.dtb  -nographic -S -s
+1)-S： 表示QEMU虚拟机会冻结CPU，知道远程的GDB输入相应的控制命令
+2)-s：表示在1234端口接受GDB的调试命令
+
+在另一个终端中驱动GDB：
+arm-linux-gnueabi-gdb --tui vmlinux
+--tui以TUI模式运行GDB；TUI模式下，GDB窗口划分为两个子窗口， 一个用于输入GDB命令，而另一个用于查看源代码。
+然后，在gdb命令行下，输入：
+(gdb) target remote localhost:1234  //通过1234端口远程连接到QEMU平台
+(gdb) b start_target				 //在start_kernel处设置断点
+(gdb) c
