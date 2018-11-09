@@ -1,0 +1,7 @@
+
+make ARCH=arm vexpress_defconfig
+
+make ARCH=arm dtbso -j12 CROSS_COMPILE=arm-linux-gnueabihf-
+
+make ARCH=arm zImage -j12 CROSS_COMPILE=arm-linux-gnueabihf-
+#CONFIG_INITRAMFS_SOURCE="../rootfs_a32.cpio.gz"
